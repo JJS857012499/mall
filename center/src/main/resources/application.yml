@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: center
+server:
+  port: 8761
+eureka:
+  instance:
+    hostname: peer1
+    instance-id: ${spring.application.name}:${server.port}
+  client:
+    serviceUrl:
+      defaultZone: http://peer1:8761/eureka/

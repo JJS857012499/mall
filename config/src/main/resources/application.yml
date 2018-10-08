@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: config
+  cloud:
+      config:
+        server:
+          git:
+            uri: https://github.com/JJS857012499/mall-config.git
+server:
+  port: 8771
+
+eureka:
+    instance:
+        instance-id: ${spring.application.name}:${server.port}
+    client:
+        serviceUrl:
+            defaultZone: http://peer1:8761/eureka/
