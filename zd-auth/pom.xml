@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.zd</groupId>
+    <artifactId>zd-auth</artifactId>
+    <packaging>pom</packaging>
+    <version>${project.release.version}</version>
+    <modules>
+        <module>zd-auth-server</module>
+        <module>zd-auth-client</module>
+        <module>zd-auth-common</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <!-- Import dependency management from Spring Boot -->
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring.cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>${jjwt.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+
+    </dependencies>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.commoditying.outputEncoding>UTF-8</project.commoditying.outputEncoding>
+        <java.version>1.8</java.version>
+        <project.release.version>0.0.1</project.release.version>
+        <spring.version>4.3.5.RELEASE</spring.version>
+        <spring.boot.version>1.4.4.RELEASE</spring.boot.version>
+        <spring.cloud.version>Camden.SR7</spring.cloud.version>
+        <mysql.version>5.1.39</mysql.version>
+        <jjwt.version>0.7.0</jjwt.version>
+
+
+    </properties>
+
+
+
+</project>

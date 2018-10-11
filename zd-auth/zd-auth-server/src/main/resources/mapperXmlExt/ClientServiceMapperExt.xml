@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zd.auth.server.mapperExt.ClientServiceMapperExt">
+
+    <sql id="and_where">
+        <where>                     
+           <if test="id != null">
+                AND id = #{id}
+            </if>
+           <if test="serviceId != null">
+                AND service_id = #{serviceId}
+            </if>
+           <if test="clientId != null">
+                AND client_id = #{clientId}
+            </if>
+           <if test="description != null">
+                AND description = #{description}
+            </if>
+           <if test="crtUser != null">
+                AND crt_user = #{crtUser}
+            </if>
+           <if test="crtName != null">
+                AND crt_name = #{crtName}
+            </if>
+           <if test="crtHost != null">
+                AND crt_host = #{crtHost}
+            </if>
+           <if test="attr1 != null">
+                AND attr1 = #{attr1}
+            </if>
+           <if test="attr2 != null">
+                AND attr2 = #{attr2}
+            </if>
+           <if test="attr3 != null">
+                AND attr3 = #{attr3}
+            </if>
+           <if test="attr4 != null">
+                AND attr4 = #{attr4}
+            </if>
+           <if test="attr5 != null">
+                AND attr5 = #{attr5}
+            </if>
+           <if test="attr6 != null">
+                AND attr6 = #{attr6}
+            </if>
+           <if test="attr7 != null">
+                AND attr7 = #{attr7}
+            </if>
+           <if test="attr8 != null">
+                AND attr8 = #{attr8}
+            </if>
+        </where>
+    </sql>
+
+	<select id="selectByPrimaryKeyWithCache" parameterType="java.lang.String" resultMap="com.zd.auth.server.mapper.ClientServiceMapper.BaseResultMap">
+        select 
+        <include refid="com.zd.auth.server.mapper.ClientServiceMapper.Base_Column_List" />
+        from client_service
+        where id = #{id,jdbcType=CHAR}
+    </select>
+
+    <select id="selectClientServiceList" resultType="com.zd.auth.server.entity.ClientService">
+        SELECT * FROM client_service 
+        <include refid="and_where"/>
+    </select>
+
+    <select id="selectClientServiceListPage" resultType="com.zd.auth.server.entity.ClientService">
+        SELECT * FROM client_service 
+        <include refid="and_where"/>
+    </select>
+</mapper>
+

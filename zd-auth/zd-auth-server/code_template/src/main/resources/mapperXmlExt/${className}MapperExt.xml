@@ -1,0 +1,40 @@
+<#include "/macro.include"/>
+<#assign className = table.className>   
+<#assign classNameFirstLower = table.classNameFirstLower>
+<#macro mapperEl value>${r"#{"}${value}}</#macro>
+<#assign sp = '#'>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="${basepackage}.mapperExt.${className}MapperExt">
+
+    <sql id="and_where">
+        <where>                     
+           <#list table.columns as column>
+           <#if column.isDateTimeColumn>
+           <#else>
+           <if test="${column.columnNameFirstLower} != null">
+                AND ${column.sqlName} = <@mapperEl column.columnNameFirstLower/>
+            </if>
+           </#if>
+           </#list>         
+        </where>
+    </sql>
+
+	<select id="selectByPrimaryKeyWithCache" parameterType="java.lang.String" resultMap="${basepackage}.mapper.${className}Mapper.BaseResultMap">
+        select 
+        <include refid="${basepackage}.mapper.${className}Mapper.Base_Column_List" />
+        from ${table.sqlName}
+        where ${table.idColumn} = ${sp}{${table.idColumn.columnNameFirstLower},jdbcType=CHAR}
+    </select>
+
+    <select id="select${className}List" resultType="${basepackage}.entity.${className}">
+        SELECT * FROM ${table.sqlName} 
+        <include refid="and_where"/>
+    </select>
+
+    <select id="select${className}ListPage" resultType="${basepackage}.entity.${className}">
+        SELECT * FROM ${table.sqlName} 
+        <include refid="and_where"/>
+    </select>
+</mapper>
+

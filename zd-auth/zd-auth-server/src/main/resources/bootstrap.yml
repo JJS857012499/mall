@@ -1,0 +1,22 @@
+######################################################################################
+##
+##  zd auth bootstrap configuration
+##  last-modify-date: 2018-10-11
+######################################################################################
+#本服务在注册中心的标识
+spring:
+  application:
+    name: zd-auth-server
+  cloud:
+    config:
+      uri: http://localhost:8771
+      label: dev
+      name: cloud
+      fail-fast: true # label表示git的分支
+
+#本项目访问的端口和目录
+server:
+  port: 8781
+  context-path: /auth
+
+
